@@ -1,8 +1,8 @@
 /* 
 play round :
-    create computer choice
+    create computer choice *
     take player choice :
-        prompt for answer
+        prompt for answer 
         check validity 
         if not valid prompt again until valid
     compare 
@@ -13,33 +13,27 @@ declare winner
 
 */ 
 let choice;
+let userplay;
 function computerchoice() {
     let choices = ["rock", "paper", "scissors"];
     choice = choices[Math.floor( Math.random() * choices.length)]
     return choice;
 }
 computerchoice()
-console.log(choice)
 
-
-
-
-
-
+userplay = prompt("Choose Rock, Paper or Scissors:")
 function checkplayerchoice() {
-    let userplay = prompt("Choose Rock, Paper or Scissors:")
-    if(userplay.toLowerCase()=="rock" || userplay.toLowerCase()=="paper" || userplay.toLowerCase()=="scissors") {
-        return userplay; 
+    while(userplay.toLowerCase()=="rock" != true && userplay.toLowerCase()=="paper" != true && userplay.toLowerCase()=="scissors" != true) {
+        userplay = prompt("Choose Rock, Paper or Scissors:")
     }
-    else {
-        
-        }
+    return userplay ;
 }
+checkplayerchoice()
+console.log(userplay)
         
     
 
 checkplayerchoice()
-let userplay = prompt("Choose Rock, Paper or Scissors:")
 function playround(userplay , computerplay) {
 
 
