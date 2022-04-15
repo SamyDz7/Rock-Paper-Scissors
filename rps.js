@@ -23,7 +23,6 @@ function computerchoice() {
 
 function checkplayerchoice() {
     while(userplay.toLowerCase()=="rock" != true && userplay.toLowerCase()=="paper" != true && userplay.toLowerCase()=="scissors" != true) {
-        userplay = prompt("Choose Rock, Paper or Scissors:")
     }
     return userplay = userplay.toLowerCase() ;
 }
