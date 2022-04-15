@@ -1,17 +1,3 @@
-/* 
-play round :
-    create computer choice *
-    take player choice :
-        prompt for answer 
-        check validity 
-        if not valid prompt again until valid
-    compare 
-    display outcome and tally points
-play 5 rounds 
-declare winner
-
-
-*/ 
 let computerplay;
 let userplay;
 let playerpoints = 0 , computerpoints = 0;
@@ -21,14 +7,16 @@ function computerchoice() {
     return computerplay;
 }
 
-function checkplayerchoice() {
-    while(userplay.toLowerCase()=="rock" != true && userplay.toLowerCase()=="paper" != true && userplay.toLowerCase()=="scissors" != true) {
-    }
-    return userplay = userplay.toLowerCase() ;
-}
-        
+const rockPlayer = document.querySelector('.rockbtn') ;
+const paperPlayer = document.querySelector('.paperbtn') ;
+const scissorsPlayer = document.querySelector('.scissorsbtn') ;
+const scores = document.querySelector('.scores')
 
-function playround(userplay , computerplay) {
+
+
+
+function playround(userplay) {
+computerchoice() 
 if (userplay == "rock") {
     if (computerplay == "rock") {
         console.log("It's a draw. ")
@@ -44,53 +32,44 @@ if (userplay == "rock") {
 }
 if (userplay == "paper") {
     if (computerplay == "paper") {
-        console.log("It's a draw. ")
+        return console.log("It's a draw. ")
     }
     else if (computerplay =="scissors") {
-        console.log("You lose! scissors beats paper.")
+        return console.log("You lose! scissors beats paper.")
         computerpoints++ ;
     }
     else {
-        console.log("You win! paper beats rock.")
+        return console.log("You win! paper beats rock.")
         playerpoints++ ;
     }
 }
 
 if (userplay == "scissors") {
     if (computerplay == "scissors") {
-        console.log("It's a draw. ")
+        return console.log("It's a draw. ")
     }
     else if (computerplay =="rock") {
-        console.log("You lose! rock beats scissors.")
+        return console.log("You lose! rock beats scissors.")
         computerpoints++ ;
     }
     else {
-        console.log("You win! scissors beats paper.")
+        return console.log("You win! scissors beats paper.")
         playerpoints++ ;
     }
-}
-
-
-
 
 }
-playround(userplay , computerplay)
-function playgame() {
-    for(let i = 0 ; i < 5 ;i++) {
-        computerchoice()
-        userplay = prompt("Choose Rock, Paper or Scissors:")
-        checkplayerchoice()
-        playround(userplay , computerplay)
-    }
-    if (playerpoints > computerpoints) {
-        console.log("Congratulations! you win the game.")
-    }
-    else if (computerpoints > playerpoints) {
-        console.log("You lose.")
-    }
-    else {
-        console.log("It's a draw!")
-    }
-
+scores.innerText = `${playerpoints} : ${computerpoints} ` ;
+if(playerpoints == 5) {
+    console.log('you win')
 }
-playgame()
+else if(computerpoints == 5) {
+    console.log('you lose')
+}
+}
+
+rockPlayer.addEventListener("click",() => {playround('rock') }) 
+paperPlayer.addEventListener("click",() => {playround('paper')})
+scissorsPlayer.addEventListener("click",() => {playround('rock')} )
+scores.innerText = `${playerpoints} : ${computerpoints} ` ;
+
+
